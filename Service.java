@@ -10,7 +10,7 @@ public class Service {
   public void addStudent(Student student) throws IOException {
     var f = new FileWriter("db.txt", true);
     var b = new BufferedWriter(f);
-    b.append(student.ToString());
+    b.append(student.ToDBString());
     b.newLine();
     b.close();
   }
@@ -24,6 +24,7 @@ public class Service {
       line = reader.readLine();
       if(line == null)
         break;
+      
       ret.add(Student.Parse(line));
     }
     reader.close();
