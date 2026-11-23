@@ -18,17 +18,38 @@ class Main {
       // s.addStudent(new Student("Krzysztof", 20));
       // s.addStudent(new Student("Janusz", 40));
 
-      System.out.print("Podaj imie studenta: ");
-      String imie = scanner.nextLine();
-      scanner.nextLine();
-      System.out.print("Podaj wiek studenta: ");
-      int wiek = scanner.nextInt();
+      boolean is_running = true;
 
-      s.addStudent(new Student(imie, wiek));
+      while (is_running) {
+        System.out.println("1. Dodaj studenta");
+        System.out.println("2. Wypisz studentow");
+        System.out.println("0. Zamknij program");
 
-      var students = s.getStudents();
-      for(Student current : students) {
-        System.out.println(current.ToString());
+        int c = scanner.nextInt();
+        scanner.nextLine();
+
+        switch (c) {
+          case 1:
+            System.out.print("Podaj imie studenta: ");
+            String imie = scanner.nextLine();
+            System.out.print("Podaj wiek studenta: ");
+            int wiek = scanner.nextInt();
+            scanner.nextLine();
+
+            s.addStudent(new Student(imie, wiek));
+            break;
+            
+          case 2:
+            var students = s.getStudents();
+            for(Student current : students) {
+              System.out.println(current.ToString());
+            }
+            break;
+            
+          case 0:
+            is_running = false;
+            break;
+        }
       }
     } catch (IOException e) {
 
